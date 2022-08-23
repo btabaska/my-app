@@ -1,5 +1,6 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import Card from "../components/card";
+import { formatDate } from "../lib/formatters";
 
 const Home = ({ NASAPhotos }) => {
   return (
@@ -14,6 +15,7 @@ const Home = ({ NASAPhotos }) => {
               description={photo.date}
               roundImage={false}
               id={id}
+              key={id}
             />
           </GridItem>
         );
@@ -26,7 +28,10 @@ const Home = ({ NASAPhotos }) => {
 export async function getServerSideProps() {
   // Fetch data from external API
   const res = await fetch(
-    `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&count=9`
+    `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&start_date=${formatDate(
+      new Date(),
+      8
+    )}`
   );
   const NASAPhotos = await res.json();
   console.log(NASAPhotos);

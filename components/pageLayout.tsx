@@ -1,11 +1,13 @@
 import { Box } from "@chakra-ui/layout";
+import Header from "./header";
 
 const PageLayout = ({ children }) => {
   return (
-    <Box width="100%" height="100%">
-      <Box bg="gray.900" paddingTop="20px">
-        {children}
+    <Box width="100%" height="100%" bg="gray.900">
+      <Box width="250px">
+        <Header />
       </Box>
+      <Box marginTop="20px">{children}</Box>
     </Box>
   );
 };
