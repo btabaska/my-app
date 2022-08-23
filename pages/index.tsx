@@ -15,7 +15,6 @@ const Home = ({ NASAPhotos }) => {
               description={photo.date}
               roundImage={false}
               id={id}
-              key={id}
             />
           </GridItem>
         );
