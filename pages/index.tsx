@@ -1,5 +1,4 @@
 import { Grid, GridItem } from "@chakra-ui/react";
-import { StoreProvider } from "easy-peasy";
 import Card from "../components/card";
 import { formatDate } from "../lib/formatters";
 import "reset-css";

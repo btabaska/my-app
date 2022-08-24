@@ -8,7 +8,7 @@ const Card = ({ image, subtitle, title, description, roundImage, id }) => {
   const [BGColor, setBGColor] = useState("gray.900");
   const cards = useStoreState((state: any) => state.activeCards);
   const changeCards = useStoreActions((store: any) => store.changeActiveCards);
-  const handleClick = (id) => {
+  const handleClick = () => {
     setBGColor("purple");
     const array = cards.push(id);
     changeCards(array);
@@ -28,7 +28,7 @@ const Card = ({ image, subtitle, title, description, roundImage, id }) => {
       borderRadius="4px"
       marginX="20px"
       boxShadow="2xl"
-      onClick={() => handleClick(id)}
+      onClick={() => handleClick()}
     >
       <Box padding="20px" boxShadow="2xl">
         <LinkBox>
