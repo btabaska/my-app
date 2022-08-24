@@ -1,6 +1,8 @@
 import { Grid, GridItem } from "@chakra-ui/react";
+import { StoreProvider } from "easy-peasy";
 import Card from "../components/card";
 import { formatDate } from "../lib/formatters";
+import "reset-css";
 
 const Home = ({ NASAPhotos }) => {
   return (
@@ -33,7 +35,6 @@ export async function getServerSideProps() {
     )}`
   );
   const NASAPhotos = await res.json();
-  console.log(NASAPhotos);
 
   // Pass data to the page via props
   return { props: { NASAPhotos } };

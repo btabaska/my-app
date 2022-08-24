@@ -1,5 +1,6 @@
 import { Box, Flex, Text } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/react";
+
 import { formatDate } from "../../lib/formatters";
 
 const Photo = ({ NASAPhoto }) => {
@@ -41,8 +42,6 @@ export const getServerSideProps = async ({ query }) => {
     )}`
   );
   const NASAPhoto = await res.json();
-  console.log("///////////////");
-  console.log(NASAPhoto);
 
   // Pass data to the page via props
   return { props: { NASAPhoto } };

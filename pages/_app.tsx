@@ -1,6 +1,7 @@
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import "reset-css";
+import { StoreProvider } from "easy-peasy";
 import PageLayout from "../components/pageLayout";
+import { store } from "../lib/store";
 
 const theme = extendTheme({
   colors: {
@@ -31,11 +32,14 @@ const theme = extendTheme({
 });
 
 const MyApp = ({ Component, pageProps }) => {
+  const StoreProviderOverride = StoreProvider as any;
   return (
     <ChakraProvider theme={theme}>
-      <PageLayout>
-        <Component {...pageProps} />
-      </PageLayout>
+      <StoreProviderOverride store={store}>
+        <PageLayout>
+          <Component {...pageProps} />
+        </PageLayout>
+      </StoreProviderOverride>
     </ChakraProvider>
   );
 };

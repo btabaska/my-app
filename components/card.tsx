@@ -1,15 +1,34 @@
 import { Box, Flex, LinkBox, LinkOverlay, Text } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/react";
+import { useStoreState, useStoreActions } from "easy-peasy";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Card = ({ image, subtitle, title, description, roundImage, id }) => {
+  const [BGColor, setBGColor] = useState("gray.900");
+  const cards = useStoreState((state: any) => state.activeCards);
+  const changeCards = useStoreActions((store: any) => store.changeActiveCards);
+  const handleClick = (id) => {
+    setBGColor("purple");
+    const array = cards.push(id);
+    changeCards(array);
+  };
+  useEffect(() => {
+    if (cards.includes(id)) {
+      setBGColor("purple");
+    } else {
+      setBGColor("gray.900");
+    }
+  }, [cards, id]);
+
   return (
     <Flex
       justify="center"
-      bg="gray.800"
+      bg={BGColor}
       borderRadius="4px"
       marginX="20px"
       boxShadow="2xl"
+      onClick={() => handleClick(id)}
     >
       <Box padding="20px" boxShadow="2xl">
         <LinkBox>
