@@ -9,12 +9,8 @@ const Header = () => {
   const cards = useStoreState((state: any) => state.activeCards);
   // set up click handler for Clear button
   const handleClick = () => {
-    const array = cards;
-    array.length = 0;
-    // Empty array and set changeCards to that empty array to clear state of colored cards
-    changeCards(array);
-    // TODO: fix solution used to force page reload and clear of state due to netifly bug
-    window.location.reload();
+    // set changeCards to empty array to clear state of colored cards
+    changeCards([]);
   };
 
   // TODO: Move back button onto cards instead of having it always sitting in the header.

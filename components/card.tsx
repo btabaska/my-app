@@ -12,15 +12,17 @@ const Card = ({ image, subtitle, title, description, roundImage, id }) => {
   // set up card color change onClick handler function
   const handleClick = () => {
     setBGColor("purple");
-    const array = cards.push(id);
-    changeCards(array);
+    changeCards([...cards, id]);
   };
   // useEffect triggers on render and when changes are made to the cards array when easyPeasy state updates
   useEffect(() => {
-    if (cards.includes(id)) {
-      setBGColor("purple");
-    } else {
-      setBGColor("gray.900");
+    console.log(cards);
+    if (cards) {
+      if (cards.includes(id)) {
+        setBGColor("purple");
+      } else {
+        setBGColor("gray.900");
+      }
     }
   }, [cards, id]);
 
