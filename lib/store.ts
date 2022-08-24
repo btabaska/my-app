@@ -4,6 +4,6 @@ export const store = createStore({
   activeCards: [],
   changeActiveCards: action((state: any, payload) => {
     // Action takes payload received and sets activeCards to that payload
-    state.activeCards = payload;
+    state.activeSongs = payload;
   }),
 });
