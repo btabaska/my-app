@@ -16,7 +16,6 @@ const Card = ({ image, subtitle, title, description, roundImage, id }) => {
   };
   // useEffect triggers on render and when changes are made to the cards array when easyPeasy state updates
   useEffect(() => {
-    console.log(cards);
     if (cards) {
       if (cards.includes(id)) {
         setBGColor("purple");
