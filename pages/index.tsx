@@ -3,6 +3,7 @@ import Card from "../components/card";
 import { formatDate } from "../lib/formatters";
 import "reset-css";
 
+// Maps 9 received NASA photo objects into a 3x3 grid
 const Home = ({ NASAPhotos }) => {
   return (
     <Grid templateColumns="repeat(3, 1fr)" gap={6}>
@@ -26,7 +27,7 @@ const Home = ({ NASAPhotos }) => {
 
 // This gets called on every request
 export async function getServerSideProps() {
-  // Fetch data from external API
+  // Fetch data from NASA API
   const res = await fetch(
     `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&start_date=${formatDate(
       new Date(),

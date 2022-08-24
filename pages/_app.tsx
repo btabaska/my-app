@@ -3,6 +3,8 @@ import { StoreProvider } from "easy-peasy";
 import PageLayout from "../components/pageLayout";
 import { store } from "../lib/store";
 
+// theme is created and extended across app for easy color and link creation
+// TODO: theme should be exported into its own lib page and imported here for readability
 const theme = extendTheme({
   colors: {
     gray: {
@@ -30,7 +32,9 @@ const theme = extendTheme({
     },
   },
 });
-
+// chakraprovider is wrapped to provide theme to all children
+// store provider is wrapped for easy peasy to provide state and actions to children
+// pageLayout is wrapped for children to receive base page formatting
 const MyApp = ({ Component, pageProps }) => {
   const StoreProviderOverride = StoreProvider as any;
   return (

@@ -4,14 +4,20 @@ import { useStoreActions, useStoreState } from "easy-peasy";
 import Link from "next/link";
 
 const Header = () => {
+  //  Import state and actions from easy peasy for use within clear button
   const changeCards = useStoreActions((store: any) => store.changeActiveCards);
   const cards = useStoreState((state: any) => state.activeCards);
+  // set up click handler for Clear button
   const handleClick = () => {
     const array = cards;
     array.length = 0;
+    // Empty array and set changeCards to that empty array to clear state of colored cards
     changeCards(array);
+    // TODO: fix solution used to force page reload and clear of state due to netifly bug
     window.location.reload();
   };
+
+  // TODO: Move back button onto cards instead of having it always sitting in the header.
   return (
     <Box width="100vw" height="100px" bg="gray.400">
       <Flex justifyContent="space-between">

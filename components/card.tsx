@@ -6,13 +6,16 @@ import { useEffect, useState } from "react";
 
 const Card = ({ image, subtitle, title, description, roundImage, id }) => {
   const [BGColor, setBGColor] = useState("gray.900");
+  // import state and action from easy-peasy
   const cards = useStoreState((state: any) => state.activeCards);
   const changeCards = useStoreActions((store: any) => store.changeActiveCards);
+  // set up card color change onClick handler function
   const handleClick = () => {
     setBGColor("purple");
     const array = cards.push(id);
     changeCards(array);
   };
+  // useEffect triggers on render and when changes are made to the cards array when easyPeasy state updates
   useEffect(() => {
     if (cards.includes(id)) {
       setBGColor("purple");
